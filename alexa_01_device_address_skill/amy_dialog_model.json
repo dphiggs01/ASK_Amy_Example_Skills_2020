@@ -1,0 +1,91 @@
+{
+  "Skill" : {
+    "version": "1.0",
+    "class_name": "device_address_skill.DeviceAddressSkill",
+    "logging_level": "debug"
+  },
+  "Session": {
+    "persistence": false
+  },
+  "Dialog": {
+    "intent_control": {
+      "GetAddressIntent": "get_address_intent",
+      "AMAZON.NavigateHomeIntent": "navigate_home_intent",
+      "AMAZON.HelpIntent": "help_intent",
+      "AMAZON.CancelIntent": "default_cancel_intent",
+      "AMAZON.StopIntent": "default_stop_intent"
+    },
+    "slots": {
+
+    },
+    "welcome_request": {
+      "speech_out_ssml": [
+        "<p>Welcome to the Sample Device Address API Skill!</p>  ",
+           "<p>You can ask for the device address by saying what is my ",
+           "address.  What do you want to ask?</p>"
+      ],
+      "re_prompt_text": "What do you want to ask? ",
+      "card": {
+        "title": "Welcome to the Device Address Skill",
+        "content": [
+          "The Device Address Skill will help you get the address stored on your alexa device. \n\n"
+        ],
+        "small_image": "https://s3.amazonaws.com/ilandapps-bucket-1/diabetes_icon_720x480b.png",
+        "large_image": "https://s3.amazonaws.com/ilandapps-bucket-1/diabetes_icon_1200x800b.png"
+      },
+      "should_end_session": false
+    },
+
+    "get_address_intent": {
+        "conditions":{
+          "no_permissions": {
+              "speech_out_text": [
+                "I need your permission to access your address. ",
+                "I’ve sent a card to your Alexa app that you can use to grant the required permissions. "
+              ],
+              "card":{
+                "type": "AskForPermissionsConsent",
+                "permissions": [
+                  "read::alexa:device:all:address"
+                ]
+              },
+              "should_end_session": true
+            },
+          "address_found": {
+          "speech_out_text": [
+            "Here is your full address: {address_line1}, {city}, {state}."
+          ],
+          "should_end_session": true
+        },
+          "address_found_with_no_data":{
+                "speech_out_text": [
+                  "It looks like you don't have an address set. ",
+                  "You can set your address from the companion app."
+                ],
+              "should_end_session": true
+          },
+          "address_not_found": {
+          "speech_out_text": [
+            "Uh Oh. Looks like something went wrong.",
+            "There was an error with the Device Address API. ",
+            "Please try again."
+          ],
+          "should_end_session": true
+        }
+        }
+
+        },
+    "navigate_home_intent": {
+        "speech_out_text": "you have called the navigate home intent",
+        "should_end_session": true
+        },
+    "help_intent": {
+        "method_name": "handle_default_intent",
+        "speech_out_text": [
+                "You can use this skill by asking something like: ",
+                "whats my address?"
+        ],
+        "should_end_session": true
+        }
+  }
+}
