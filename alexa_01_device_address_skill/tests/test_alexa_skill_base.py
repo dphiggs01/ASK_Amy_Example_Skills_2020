@@ -21,7 +21,6 @@ class TestAlexaSkillBase(unittest.TestCase):
 
     # Helper functions
     def get_request_response(self, file_name):
-        print("FME1")
         file_ptr_r = open("./data/{}".format(file_name), 'r')
         request_response = json.load(file_ptr_r)
         file_ptr_r.close()

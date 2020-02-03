@@ -30,8 +30,8 @@
         "content": [
           "The Device Address Skill will help you get the address stored on your alexa device. \n\n"
         ],
-        "small_image": "https://s3.amazonaws.com/ilandapps-bucket-1/diabetes_icon_720x480b.png",
-        "large_image": "https://s3.amazonaws.com/ilandapps-bucket-1/diabetes_icon_1200x800b.png"
+        "small_image": "https://s3.amazonaws.com/ilandapps-bucket-1/address-720x480.png",
+        "large_image": "https://s3.amazonaws.com/ilandapps-bucket-1/address-1200x800.png"
       },
       "should_end_session": false
     },
@@ -59,8 +59,9 @@
         },
           "address_found_with_no_data":{
                 "speech_out_text": [
-                  "It looks like you don't have an address set. ",
-                  "You can set your address from the companion app."
+                  "We did find your address record but unfortunately ",
+                  "It looks like you don't have the street data filled in. ",
+                  "You can set or update your address from the companion app."
                 ],
               "should_end_session": true
           },
@@ -85,6 +86,16 @@
                 "You can use this skill by asking something like: ",
                 "whats my address?"
         ],
+      "card": {
+        "title": "Welcome to the Device Address Skill.",
+        "content": [
+          "The Device Address skill provides information about your Alexa Devices Address. \n\n  ",
+          "You can use this skill by asking something like: \n\n",
+                "Whats my address?"
+        ],
+        "small_image": "https://s3.amazonaws.com/ilandapps-bucket-1/address-720x480.png",
+        "large_image": "https://s3.amazonaws.com/ilandapps-bucket-1/address-1200x800.png"
+      },
         "should_end_session": true
         }
   }
